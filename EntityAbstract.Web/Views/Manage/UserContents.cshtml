@@ -1,0 +1,52 @@
+﻿@model ContentsViewModel
+@{
+    ViewData["Title"] = "所有内容";
+    ViewData.AddActivePage(ManageNavPages.Contents);
+}
+<div class="row list-box">
+    <form method="get" class="col-md-push-1 col-md-10 col-xs-12 list-group">
+        <!--TODO-->
+        @for (int i = 0; i < Model.Contents.Count(); i++)
+        {
+            var news = Model.Contents.ElementAt(i);
+            if (news.ContentGroupId != 0)
+            {
+                <div class="list-group-item">
+                   <a class="row" asp-route-cid="@news.Id" asp-controller="Content" asp-action="Get" title="@news.Title">
+                    <div class="col-md-7 col-xs-12">
+                        <label class="label-title label-waper text-info">@news.Title </label>
+                        <label class="label-title text-muted label-content">@news.CreateTime</label>
+                    </div>
+                    </a>
+                    <a class="pull-right text-danger" asp-action="DeleteContent" asp-controller="Content" asp-route-id="@news.Id" asp-route-page="@Model.LocPage">删除</a>
+                </div>
+                <hr />
+            }
+        }
+    </form>
+</div>
+<div class="row">
+    <br />
+    <div class="btn-group col-md-push-1 center-block">
+        @{
+            var prePage = Model.LocPage - 1;
+            var nextPage = Model.LocPage + 1;
+            <form method="get">
+                @{
+                    if (prePage>=0)
+                    {
+                        <a asp-action="Contents" asp-route-page="@prePage" class="pull-left a-control-left">上一页</a>
+                    }
+                    if (nextPage <= Model.TotalCount / 6)
+                    {
+                        <a asp-action="Contents" asp-route-page="@nextPage" class="pull-right a-control-right">下一页</a>
+                    }
+                }
+
+            </form>
+        }
+    </div>
+</div>
+<hr />
+<label class="text-muted center-block text-center">最多只会显示6个内容</label>
+

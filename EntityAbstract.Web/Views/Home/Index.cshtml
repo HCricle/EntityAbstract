@@ -1,0 +1,50 @@
+﻿@model EntityAbstract.Web.Models.HomeViewModels.IndexViewModel
+@{
+    ViewData["Title"] = "纸片的世界";
+    var count = $"随机抽图-存在{Model.ImgCount}张图";
+}
+@section Css{ 
+    <link rel="stylesheet" href="~/css/indexMeow.css"/>
+}
+<div class="header body-contrain div-mainx">
+    <!--这里是前页-->
+    <!--
+    <h1>QAQ</h1>
+    <p>
+        尝试把Web，游戏，漫画结合起来
+    </p>
+    <p>
+        <a asp-action="RandomIndex" class="btn btn-lg btn-primary" title="看你运气了">
+            count
+        </a>
+    </p>
+    -->
+    <h1>QAQ</h1>
+    <div class="div-x">
+        有什么能摆上去咧,摆个客户端吧!
+    </div>
+    <h3>
+        我们有 Bug满天&超丑的客户端
+    </h3>
+    <p>
+        支持win xp->win 10,安卓&ios&UWP开发中
+        <br />
+    </p>
+    <form asp-action="PcClient" method="get">
+        <button class="btn btn-default" type="submit">下载!</button>
+    </form>
+</div>
+<div>
+    @{
+        /*
+        var img = Model?.Imgs.FirstOrDefault();
+        if (img != null)
+        {
+            var path = $"/{img.Path}/{img.FileName}";
+            <a asp-controller="Content" asp-route-cid="@img.ContentId" asp-action="Get" asp-route-lp="0" asp-route-ppc="6" asp-route-ujs="false">
+                <img class="img-responsive" src="@path"/>
+            </a>
+        }
+        */
+    }
+</div>

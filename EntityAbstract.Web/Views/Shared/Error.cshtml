@@ -1,0 +1,19 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">发送异常.</h1>
+<h2 class="text-danger">在请求时发生了未处理异常</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>请求ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<h3>开发者模式(已翻译)</h3>
+<p>
+    转换到 <strong>开发者</strong> 环境将显示更多此错误的细节。
+</p>

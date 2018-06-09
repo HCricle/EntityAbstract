@@ -1,0 +1,108 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using EntityAbstract.Web.Models.HomeViewModels;
+@using EntityAbstract.Web.Models.SharedViewModels
+@using SharedEA.Core.DbModel.DbModels;
+@using EntityAbstract.Web.Helpers;
+@model MakeContentViewModel
+@inject SignInManager<EaUser> SignInManager
+@if (!SignInManager.IsSignedIn(User))
+{
+    <div class="center-block label-message div-centent text-center">
+        <label class="text-info row">
+            你还没有登陆
+        </label>
+        <a class="text-muted row" asp-area="" asp-controller="Account" asp-action="Login">登陆</a>
+    </div>
+}
+else
+{
+    ViewData["Title"] = "发送";
+    @section Scripts{
+        <script>
+            var app = angular.module('app', []);
+            app.controller('filecontroller', function ($scope) {
+                $scope.errMsg = "";
+                $scope.visitTable = true;
+                $scope.parseFile = ["jpg", "jpeg", "png", "bmp"];
+                $scope.innerFile = ["css", "js", "html"];
+                $scope.pbchar = ["江泽"];
+                $scope.fileschanged = function (files) {
+                    $scope.fs = [];
+                    if (files.files.length > 6) {
+                        $scope.errMsg = "最多只能上传5个文件";
+                        $scope.$apply();
+                        return;
+                    } else {
+                        $scope.errMsg = "";
+                    }
+                    $scope.visitTable = files.files.length == 0;
+
+                    for (var i = 0; i < files.files.length; i++) {
+                        var f = files.files[i];
+                        var finfo = "可下载";
+                        var fname = f.name.split(".");
+                        if ($scope.parseFile.indexOf(fname[fname.length - 1]) != -1) {
+                            finfo = "解析进html";
+                        }
+                        if ($scope.innerFile.indexOf(fname[fname.length - 1]) != -1) {
+                            finfo = "内联进页面";
+                        }
+                        $scope.fs.push({ name: f.name, info: finfo });
+                    }
+                    $scope.$apply();
+                };
+            });
+        </script>
+    }
+    <h2>
+        发送
+    </h2>
+    <div ng-app="app" ng-controller="filecontroller">
+        <p class="text-muted">
+            &emsp;请注意，不能发布违法国家法律，擅自转载的一切东西，一经发现，<strong>清除此用户使用数据</strong>
+        </p>
+        <p class="text-muted">
+            &emsp;限文件总大小20m(ui不难看呀<b title="我不管QAQ"><iamright><uiverybeautiful>QAQ</uiverybeautiful></iamright></b>)!
+        </p>
+        <div class="btn-group-vertical center-block col-push-1">
+            <div asp-validation-summary="All">
+            </div>
+            <form asp-controller="Content" method="post" class="form-group" enctype="multipart/form-data">
+                发送到
+                <select class="selected router-link-active" asp-for="TargetGroup" asp-items="Model.SendGroups"></select>
+                <input class="form-control" asp-for="Title" ng-minlength="10" placeholder="标题" />
+                <!--自动拆分:<input asp-for="AutoJs" title="如果选中，上传文件的html如果存在script标签则会自动拆分" />-->
+                <input asp-for="Files" onchange="angular.element(this).scope().fileschanged(this)" class="list-box" type="file" name="Files" multiple />
+                <div ng-hide="visitTable">
+                    <span class="danger text-danger">{{errMsg}}</span>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td scope="col">
+                                    #
+                                </td>
+                                <td scope="col">
+                                    文件名
+                                </td>
+                                <td scope="col">
+                                    将会
+                                </td>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="f in fs">
+                            <td>{{$index+1}}</td>
+                            <td>{{f.name}}</td>
+                            <td>{{f.info}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <textarea class="form-control text-area" asp-for="Content" style="height:300px;" placeholder="内容">
+                </textarea>
+                <button class="list-box btn btn-info btn-send-content text-center center-block" type="submit" asp-action="MakeContent">
+                    发送
+                </button>
+            </form>
+        </div>
+
+    </div>
+}

@@ -1,0 +1,29 @@
+﻿@using SharedEA.Core.Model.DbModels;
+@inject SignInManager<EaUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<ul class="nav nav-pills nav-stacked">
+    <li>
+        <a href="#" class="light-border btn-user dropdown-toggle" data-toggle="dropdown" data-haspopup="true">
+            <label class="text-center text-info">用户</label><span class="caret"></span>
+        </a>
+        <ul id="ulas" class="dropdown-menu">
+            <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">简介</a></li>
+            <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)"><a asp-action="ChangePassword">密码</a></li>
+            @if (hasExternalLogins)
+            {
+                <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext)"><a asp-action="ExternalLogins">外部登陆</a></li>
+            }
+            @if (false)
+            {
+                <li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)"><a asp-action="TwoFactorAuthentication">双因素身份验证</a></li>
+            }
+            <li class="@ManageNavPages.ContentsClass(ViewContext)"><a asp-action="Contents" asp-route-page="0">内容</a></li>
+            <li class="@ManageNavPages.MsgClass(ViewContext)"><a asp-controller="Manager" asp-action="GoMsg" asp-route-p="0">消息</a></li>
+
+        </ul>
+    </li>
+</ul>
+

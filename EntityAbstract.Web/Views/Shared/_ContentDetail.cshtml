@@ -1,0 +1,95 @@
+﻿@using EntityAbstract.Web.Models.HomeViewModels;
+@using Microsoft.AspNetCore.Identity;
+@using SharedEA.Core.DbModel.DbModels;
+@inject UserManager<EaUser> UserManager
+@model ContentDetailViewModel
+
+<div class="body-content div-mainx">
+    <div class="row page-header">
+        <label class="label-title">
+            <!--标题-->
+            @Model.Content.Title
+        </label>
+        <div class="text-muted label-content">
+            <!--时间+标签-->
+            @Model.Content.CreateTime&emsp;
+            <label>作者:@Model.Sender.UserName</label>
+            &emsp;
+            @if (Model.HasLable)
+            {
+                for (int i = 0; i < Model.Lables.Count(); i++)
+                {
+                    <label>@Model.Lables.ElementAt(i) &emsp;</label>
+                }
+            }
+
+        </div>
+    </div>
+    <!--显示文件-->
+    @await Html.PartialAsync("_OnlyContent", Model)
+    <hr />
+    <!--这里是点赞-->
+    <div class="row">
+        <div class="form-horizontal text-right center-block text-muted a-like">
+            @{
+                var head = "glyphicon " + (!Model.IsLike ? "glyphicon-heart-empty" : "glyphicon-heart");
+            }
+            <a class="btn-send-none" asp-action="Like" asp-route-cid="@Model.Content.Id" asp-route-ujs="@Model.UseJs.ToString()" asp-route-lp="@Model.LocPage" asp-route-ppc="@Model.PrePageCount">
+                <span class=" btn-group @head" aria-hidden="true" /> 喜欢
+            </a>
+            @if (Model.HasJsFile)
+            {
+                var useJs = !Model.UseJs;
+                var tip = useJs ? "启用页面js (请慎重启用)" : "关闭页面js";
+                <a class="text-danger" asp-route-cid="@Model.Content.Id" asp-controller="Content" asp-action="Get" asp-route-lp="0" asp-route-ppc="6" asp-route-ujs="@useJs">
+                    @tip
+                </a>
+            }
+        </div>
+    </div>
+    <hr title="被你发现了" />
+    <div class="btn-block">
+        @for (int i = 0; i < Model.Comments.Count(); i++)
+        {
+            var comment = Model.Comments.ElementAt(i);
+            <div class="">
+                <div class="form-horizontal">
+                    <label class="btn-group lable-comment">@comment.UserName</label>
+                    <label class="text-info">@comment.CreateTime.ToShortDateString()</label>
+                    @if (comment.UserName == UserManager.GetUserName(User))
+                    {
+                        <form method="post" class="btn-group">
+                            <button asp-action="DeleteCommend" asp-route-cid="@Model.Content.Id" asp-route-id="@comment.Id" class="button-delete">删除</button>
+                        </form>
+
+                    }
+                </div>
+                <div class="label-contentstring center-block">
+                    @(new Microsoft.AspNetCore.Html.HtmlString(comment.HtmlContent))
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+    <div class="row">
+        <br />
+        <div class="btn-group col-md-push-1 center-block">
+            @{
+                <form method="get">
+                    @{
+                        if (Model.HasPrevPage)
+                        {
+                            <a asp-action="Get" asp-route-cid="@Model.Content.Id" asp-route-ppc="6" asp-route-lp="@Model.PrevPage" asp-route-ujs="@Model.UseJs" class="pull-left a-control-left">上一页</a>
+                        }
+                        if (Model.HasNextPage)
+                        {
+                            <a asp-action="Get" asp-route-cid="@Model.Content.Id" asp-route-ppc="6" asp-route-lp="@Model.NextPage" asp-route-ujs="@Model.UseJs" class="pull-right a-control-right">下一页</a>
+                        }
+                    }
+                </form>
+            }
+        </div>
+    </div>
+    <br />
+    @await Html.PartialAsync("_CommentSendPartial.cshtml", new CommentSendModel() { ContentId = Model.Content.Id, SendText = "" })
+</div>

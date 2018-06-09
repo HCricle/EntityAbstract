@@ -1,0 +1,67 @@
+﻿@using EntityAbstract.Web.Models.HomeViewModels;
+@using Microsoft.AspNetCore.Identity;
+@using SharedEA.Core.DbModel.DbModels;
+@using SharedEA.Data.Repositories;
+@model ContentDetailViewModel
+@{
+    Layout = null;
+}
+@section Scripts{
+    @{
+        if (Model.UseJs && Model.HasJsFile)
+        {
+            string file;
+            for (int i = 0; i < Model.JsFile.Count(); i++)
+            {
+                var f = Model.JsFile.ElementAt(i);
+                file = $"/{f.Path}/{f.FileName}";
+                <script src="@file"></script>
+            }
+        }
+    }
+}
+@section Css{
+    @{
+        if (Model.HasCssFile)
+        {
+            string file;
+            for (int i = 0; i < Model.CssFile.Count(); i++)
+            {
+                var f = Model.CssFile.ElementAt(i);
+                file = $"/{f.Path}/{f.FileName}";
+                <link rel="stylesheet" href="@file" />
+            }
+        }
+    }
+}
+<div class="row text-center">
+    @{
+        if (Model.HasHtmlFile)
+        {
+            for (int i = 0; i < Model.HtmlFile.Count(); i++)
+            {
+                var html = Model.HtmlFile.ElementAt(i);
+                <div class="content-maked">
+                    @await Html.PartialAsync($"~/{System.IO.Path.Combine("wwwroot", html.Path, html.FileName)}")
+                </div>
+            }
+        }
+    }
+</div>
+<div>
+    <!--这里是放其它文件-->
+    @if (Model.HasCanDownloadFile)
+    {
+        <div class="page-header">
+            存在内容
+        </div>
+
+        for (int i = 0; i < Model.CanDownloadFile.Count(); i++)
+        {
+            var file = Model.Content.ContentFiles.ElementAt(i);
+            <a class="center-block" asp-controller="Content" asp-action="GetFile" asp-route-path="@file.Path" asp-route-name="@file.FileName">
+                @file.OriginalName
+            </a>
+        }
+    }
+</div>

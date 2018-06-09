@@ -1,0 +1,11 @@
+﻿@model EntityAbstract.Web.Models.SharedViewModels.MessageModel
+@{ 
+    //这里是公用的提示页
+    ViewData["Title"] = Model.Title;
+}
+<div class="center-block label-message div-centent text-center">
+    <label class="text-info row">
+        @Model.Text
+    </label>
+    <a class="text-muted row" asp-controller="@Model.Controller" asp-action="@Model.Action">@Model.GoText</a>
+</div>

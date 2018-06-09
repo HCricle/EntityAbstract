@@ -1,0 +1,47 @@
+﻿@using EntityAbstract.Web.Models.HomeViewModels;
+@using Microsoft.AspNetCore.Identity;
+@using SharedEA.Core.DbModel.DbModels;
+@model CommentSendModel
+@inject SignInManager<EaUser> SignInManager
+<script>
+    function Hide() {
+        var pl = document.getElementById("pl");
+        var ac = document.getElementById("ac");
+        if (pl.style.display == "") {
+            pl.style.display = "none";
+            ac.innerText = "显示评论"
+        } else {
+            pl.style.display = "";
+            ac.innerText = "关闭评论"
+        }
+    }
+</script>
+
+<!--要登陆才行-->
+@{
+    if (SignInManager.IsSignedIn(User))
+    {
+        <a id="ac" href="#" onclick="Hide()">显示评论</a>
+        <div id="pl" style="display:none;">
+            <div asp-validation-summary="All" class="text-danger">
+
+            </div>
+            <label class="text-muted">评论一下?....</label>
+            <!--这里是发-->
+            <form method="post" class="form-group">
+                <input asp-for="ContentId" style="display:none" />
+                <textarea asp-for="SendText" class="btn-block form-group text-area" placeholder="内容">
+        
+                </textarea>
+                <button asp-action="SendCommend" asp-route-cid="@Model.ContentId" class="btn center-block btn-info btn-send">发送</button>
+            </form>
+        </div>
+    }
+    else
+    {
+        <div class="btn-block">
+            <a asp-controller="Account" asp-action="Login" class="text-center center-block">登陆即可评论</a>
+        </div>
+        <hr />
+    }
+}

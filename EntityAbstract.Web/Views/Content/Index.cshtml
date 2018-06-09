@@ -1,0 +1,46 @@
+﻿@using EntityAbstract.Web.Models.ContentViewModels;
+@using Microsoft.AspNetCore.Html;
+@model IndexContentViewModel
+
+@{
+    //这里显示内容，用分享页，一页6个
+
+    //(上一页)  一共几多页  (下一页)
+    ViewData["Title"] = Model.Title;
+}
+<div>
+    <h1>
+        <!--介绍组信息-->
+        @Model.Title
+    </h1>
+</div>
+<div class="panel">
+    <form method="get" class="form-main">
+        <a class="text-nowrap text-center" asp-action="GoMakeContent" title="发送你画的，你想的，你所喜欢的内容">我也要发</a>
+    </form>
+    <div class="list-box">
+        @await Html.PartialAsync("_ContentsViewPartial", Model.Contents)
+    </div>
+</div>
+    <ul class="pager">
+        <!--下一页，当前页数/总页数，上一页-->
+            @{
+                if (Model.HasPrevPage)
+                {
+
+                    <li class="previous">
+                        <!--<a asp-action="Model.Action" asp-route-page="prevPage" aria-hidden="true" title="上一页,如果有">&larr;上一页</a>-->
+                        <a href="/Content/@Model.Action/@Model.PrevRoutesHref">&larr;上一页</a>
+
+                    </li>
+                }
+                <li class="text-center text-muted" title="我是从0开始计数的呀!">@Model.LocPage/@Model.TotalPage</li>
+                if (Model.HasNextPage)
+                {
+                    <li class="next">
+                        <a href="/Content/@Model.Action/@Model.NextRoutesHref">下一页&rarr;</a>
+                        <!--<a asp-action="@Model.Action" asp-route-page="nextPage" aria-hidden="true" title="不告诉你!">下一页&rarr;</a>-->
+                    </li>
+                }
+            }    
+    </ul>
