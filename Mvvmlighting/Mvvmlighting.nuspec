@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Laplace.MvvmLighting</id>
+    <version>1.0.0</version>
+    <title>Laplace.MvvmLighting</title>
+    <authors>Laplace</authors>
+    <owners>Laplace</owners>
+    <licenseUrl>http://null</licenseUrl>
+    <projectUrl>http://null</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>To easy use mvvm in android,ios,uwp,wpf ect.</description>
+    <releaseNotes>To use mvvm easy for build the project.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>mvvm,csharp</tags>
+  </metadata>
+</package>

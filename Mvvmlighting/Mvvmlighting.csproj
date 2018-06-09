@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>To easy use mvvm in android,ios,uwp,wpf ect.</Description>
+    <PackageTags>mvvm,csharp,uwp,wpf,android,ios</PackageTags>
+    <Company>Laplace</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Laplace.Mvvmlighting</PackageId>
+    <Authors>Laplace</Authors>
+    <Copyright>Copyright 2018</Copyright>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+</Project>
