@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CommentMfiNext.Text" xml:space="preserve">
+    <value>下一页</value>
+  </data>
+  <data name="CommentMfiPrev.Text" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="FlushingText" xml:space="preserve">
+    <value>正在更新</value>
+  </data>
+  <data name="FlushText" xml:space="preserve">
+    <value>下拉更新</value>
+  </data>
+  <data name="MfiFlush.Text" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="NvTitle" xml:space="preserve">
+    <value>当前为空</value>
+  </data>
+  <data name="SearchingText" xml:space="preserve">
+    <value>正在搜索</value>
+  </data>
+  <data name="TipFlush" xml:space="preserve">
+    <value>请右键刷新</value>
+  </data>
+  <data name="FlushFail" xml:space="preserve">
+    <value>刷新失败,请稍后重试</value>
+  </data>
+  <data name="NvHeader.Header" xml:space="preserve">
+    <value>虚实 - Ea</value>
+  </data>
+  <data name="CommentSendErr" xml:space="preserve">
+    <value>发送评论失败，请稍后重试</value>
+  </data>
+  <data name="CommentTextEmpty" xml:space="preserve">
+    <value>欲发送的消息为空</value>
+  </data>
+  <data name="NonLogin" xml:space="preserve">
+    <value>请登录再操作</value>
+  </data>
+  <data name="EmptyUNameOrPwd" xml:space="preserve">
+    <value>用户名或密码为空</value>
+  </data>
+  <data name="ErrLogin" xml:space="preserve">
+    <value>登陆失败，请检查你的用户名密码</value>
+  </data>
+  <data name="ErrLogOff" xml:space="preserve">
+    <value>登出失败</value>
+  </data>
+  <data name="Login.Content" xml:space="preserve">
+    <value>登陆</value>
+  </data>
+  <data name="LoginSucceed" xml:space="preserve">
+    <value>登陆成功</value>
+  </data>
+  <data name="NonNetwork" xml:space="preserve">
+    <value>连接服务器失败</value>
+  </data>
+  <data name="UName.PlaceholderText" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="UPwd.PlaceholderText" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="CommLengthErr" xml:space="preserve">
+    <value>评论最少8个字符</value>
+  </data>
+  <data name="NavErr" xml:space="preserve">
+    <value>转页失败</value>
+  </data>
+  <data name="SendCommOk" xml:space="preserve">
+    <value>发送成功</value>
+  </data>
+  <data name="DelCommErr" xml:space="preserve">
+    <value>删除评论失败</value>
+  </data>
+  <data name="DelCommOk" xml:space="preserve">
+    <value>删除评论成功</value>
+  </data>
+  <data name="ContentText" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="HomeText" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="ApplyFriendErr" xml:space="preserve">
+    <value>申请好友失败</value>
+  </data>
+  <data name="ApplyFriendOk" xml:space="preserve">
+    <value>申请已发出</value>
+  </data>
+  <data name="CreateConversion.Tooltip" xml:space="preserve">
+    <value>创建一个会话</value>
+  </data>
+  <data name="DelMsgErr" xml:space="preserve">
+    <value>删除会话失败</value>
+  </data>
+  <data name="FlushFriend.Text" xml:space="preserve">
+    <value>刷新朋友列表</value>
+  </data>
+  <data name="FlushMsg.Text" xml:space="preserve">
+    <value>刷新会话列表</value>
+  </data>
+  <data name="FlushMsgDetailErr" xml:space="preserve">
+    <value>加载会话详细失败</value>
+  </data>
+  <data name="FlushMsgErr" xml:space="preserve">
+    <value>刷新会话失败</value>
+  </data>
+  <data name="MsgPageText" xml:space="preserve">
+    <value>消息</value>
+  </data>
+  <data name="MsgTitleNull" xml:space="preserve">
+    <value>当前会话为空</value>
+  </data>
+  <data name="NonSendText" xml:space="preserve">
+    <value>欲发送的内容为空</value>
+  </data>
+  <data name="SearchErr" xml:space="preserve">
+    <value>搜索失败</value>
+  </data>
+  <data name="SelectMsgNull" xml:space="preserve">
+    <value>当前没有选中会话</value>
+  </data>
+  <data name="SendMinErr" xml:space="preserve">
+    <value>发送的内容至少6个字符</value>
+  </data>
+  <data name="SendMsgErr" xml:space="preserve">
+    <value>发送消息失败</value>
+  </data>
+  <data name="ShowFriendWithoutHasMsg.Content" xml:space="preserve">
+    <value>不在会话中</value>
+  </data>
+  <data name="UpdateFirendErr" xml:space="preserve">
+    <value>更新朋友列表错误</value>
+  </data>
+  <data name="ApplyAcceptErr" xml:space="preserve">
+    <value>同意失败</value>
+  </data>
+  <data name="ApplyAcceptOk" xml:space="preserve">
+    <value>已同意申请</value>
+  </data>
+  <data name="FlushApplyFriendErr" xml:space="preserve">
+    <value>刷新好友申请失败</value>
+  </data>
+  <data name="BeginMsgErr" xml:space="preserve">
+    <value>创建会话失败，可能已存在会话</value>
+  </data>
+  <data name="BeginMsgOk" xml:space="preserve">
+    <value>创建会话成功</value>
+  </data>
+  <data name="ISay" xml:space="preserve">
+    <value>而我什么都不是</value>
+  </data>
+  <data name="MakeContentTitle" xml:space="preserve">
+    <value>发送</value>
+  </data>
+  <data name="NonApply.Text" xml:space="preserve">
+    <value>暂时没有好友申请</value>
+  </data>
+  <data name="SendContentErr" xml:space="preserve">
+    <value>发送失败</value>
+  </data>
+  <data name="SendException" xml:space="preserve">
+    <value>发送时出现了异常</value>
+  </data>
+  <data name="SendOk" xml:space="preserve">
+    <value>发送成功</value>
+  </data>
+  <data name="UnableLoadImg" xml:space="preserve">
+    <value>无法加载图片</value>
+  </data>
+</root>

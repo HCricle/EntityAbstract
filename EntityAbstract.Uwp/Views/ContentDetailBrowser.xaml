@@ -1,0 +1,61 @@
+﻿<UserControl
+    x:Class="EntityAbstract.Uwp.Views.ContentDetailBrowser"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EntityAbstract.Uwp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="using:EntityAbstract.Uwp.Converters"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Loaded="UserControl_Loaded"
+    DataContext="{Binding Source={StaticResource ViewModelLocator},Path=ContentDetailViewModel}">
+    <UserControl.Resources>
+        <converter:VisibilityBooleanConverter x:Key="VisibilityBooleanConverter"/>
+        <converter:DateTimeStringConverter x:Key="DateTimeStringConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource TransButton}"
+                    Command="{x:Bind ViewModel.GoBackCommand}">
+                <SymbolIcon Symbol="{x:Bind ViewModel.PreSymbol,Converter={StaticResource CharSymbolConverter}}"/>
+            </Button>
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <ProgressRing x:Name="Pbr"
+                              IsActive="True"
+                              Foreground="LightGray"
+                              Margin="0,0,10,0"/>
+                <TextBlock Text="{x:Bind ViewModel.ContentTitle,Mode=OneWay}"
+                           Style="{StaticResource CentTitle}"/>
+            </StackPanel>
+            <Button Style="{StaticResource TransButton}"
+                    Grid.Column="2"
+                    Command="{x:Bind ViewModel.NavToCommentCommand}">
+                <SymbolIcon Symbol="Comment"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <WebView x:Name="Wv"
+                     NavigationStarting="Wv_NavigationStarting"
+                     NavigationCompleted="Wv_NavigationCompleted"
+                     UnviewableContentIdentified="Wv_UnviewableContentIdentified" 
+                     ScriptNotify="Wv_ScriptNotify" 
+                     UnsafeContentWarningDisplaying="Wv_UnsafeContentWarningDisplaying"
+                     UnsupportedUriSchemeIdentified="Wv_UnsupportedUriSchemeIdentified"/>
+        </Grid>
+    </Grid>
+</UserControl>

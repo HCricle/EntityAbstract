@@ -1,0 +1,88 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="using:EntityAbstract.Uwp.Converters"
+    xmlns:selector="using:EntityAbstract.Uwp.Selectors"
+    xmlns:mm="using:SharedEA.Core.DbModel.Models">
+    <converter:CharSymbolConverter x:Key="CharSymbolConverter"/>
+    <converter:DateTimeStringConverter x:Key="DateTimeStringConverter"/>
+    <converter:VisibilityBooleanConverter x:Key="VisibilityBooleanConverter"/>
+    <converter:ListStringUriConverter x:Key="ListStringUriConverter"/>
+    <converter:StirngUriConverter x:Key="StirngUriConverter"/>
+
+    <Style x:Key="badReqTextBlock"
+           TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Red"/>
+    </Style>
+    <Style x:Key="HeadGrid"
+           TargetType="Grid">
+        <Setter Property="Margin" Value="50,0,0,0"/>
+    </Style>
+    <Style x:Name="DefTextBox"
+           TargetType="TextBox">
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    <Style x:Name="StretchListViewItem"
+           TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+    </Style>
+    <Style x:Key="CentTitle" 
+           TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="RadBtn"
+           TargetType="Button"
+           BasedOn="{StaticResource TransButton}">
+        <Setter Property="Foreground" Value="Red"/>
+    </Style>
+    <Style x:Key="HeadTextBlock"
+           TargetType="TextBlock">
+        <Style.Setters>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="ItemTextBlock"
+           TargetType="TextBlock">
+        <Style.Setters>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="12,0,0,0"/>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="ViewItemSymbolIcon"
+           TargetType="SymbolIcon">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="TransTextBox" TargetType="TextBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+    <Style x:Key="TransButton" TargetType="Button">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+    <Style x:Key="RelBorder" TargetType="Border">
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+    <Style x:Key="DesTextBlock" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    <Style x:Name="RelGrid" TargetType="Grid">
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="BorderThickness" Value="1.6"/>
+        <Setter Property="Margin" Value="10,4"/>
+    </Style>
+    <Style x:Name="MsgBorder" TargetType="Border">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+</ResourceDictionary>

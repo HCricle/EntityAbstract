@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="EntityAbstract.Uwp.Views.SendContentView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EntityAbstract.Uwp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:m="using:SharedEA.Core.WebApi.JWT"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource ViewModelLocator},Path=SendContentViewModel}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <!--操作栏-->
+            <RowDefinition Height="Auto"/>
+            <!--发送的文件-->
+            <RowDefinition Height="Auto"/>
+            <!--文本-->
+            <RowDefinition Height="*"/>
+            <!--发送选项-->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource TransButton}">
+                    </Style>
+                </StackPanel.Resources>
+                <Button x:Name="BtnOpenFiles"
+                        Click="BtnOpenFiles_Click">
+                    <SymbolIcon Symbol="OpenFile"/>
+                </Button>
+                <Button x:Name="BtnCleanFiles"
+                        Command="{x:Bind ViewModel.CleanFilesCommand}">
+                    <SymbolIcon Symbol="Clear"/>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="2">
+                <Button Style="{StaticResource TransButton}">
+                    <SymbolIcon Symbol="Stop"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid MaxHeight="200">
+            <ListView ItemsSource="{x:Bind ViewModel.SendFiles}"
+                      ItemContainerStyle="{StaticResource StretchListViewItem}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="m:ApiFileModel">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{x:Bind Path}"/>
+                            <Button Style="{StaticResource TransButton}"
+                                    Tag="{x:Bind}"
+                                    Click="Button_Click"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <TextBox x:Name="RbContent"
+                 Grid.Row="2"
+                 Text="{x:Bind ViewModel.SendContent,Mode=TwoWay}"/>
+        <Grid Grid.Row="3">
+            <Button Style="{StaticResource TransButton}"
+                    Margin="10,0"
+                    Command="{x:Bind ViewModel.SendCommand}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center">
+                <SymbolIcon Symbol="Send"/>
+            </Button>
+        </Grid>
+    </Grid>
+</Page>

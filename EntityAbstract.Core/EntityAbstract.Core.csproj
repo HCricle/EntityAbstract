@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mvvmlighting\Mvvmlighting.csproj" />
+    <ProjectReference Include="..\Shared.Core.Api\Shared.Core.Api.csproj" />
+    <ProjectReference Include="..\SharedEA.Core.DbModel\SharedEA.Core.DbModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+</Project>
